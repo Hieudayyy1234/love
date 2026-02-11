@@ -5,82 +5,91 @@
 <title>Love Website</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial;
-    text-align: center;
-    background: #ffe6f0;
-    color: black;
-    overflow: hidden;
+body{
+    margin:0;
+    font-family:Arial;
+    text-align:center;
+    background:#ffe6f0;
+    color:black;
+    overflow:hidden;
 }
 
-/* màn hình khóa */
-#lock {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#lock{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
-/* nội dung chính */
-#main {
-    display: none;
+#main{ display:none; }
+
+input{
+    padding:10px;
+    font-size:18px;
+    border-radius:10px;
+    border:none;
 }
 
-input {
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 10px;
-    border: none;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 20px;
-    border: none;
-    margin-top: 10px;
-    cursor: pointer;
-    background:white;
+button{
+    padding:10px 20px;
+    font-size:18px;
+    border-radius:20px;
+    border:none;
+    margin-top:10px;
+    cursor:pointer;
 }
 
 /* ảnh */
-img {
-    width: 280px;
-    border-radius: 20px;
-    margin: 15px;
-    border: 5px solid white;
+img{
+    width:260px;
+    border-radius:20px;
+    margin:15px;
+    border:5px solid white;
 }
 
 /* tim rơi */
-.heart {
-    position: absolute;
-    font-size: 22px;
-    animation: fall linear infinite;
+.heart{
+    position:absolute;
+    font-size:22px;
+    animation:fall linear infinite;
 }
 
-@keyframes fall {
-    from { transform: translateY(-10vh); }
-    to { transform: translateY(110vh); }
+@keyframes fall{
+    from{transform:translateY(-10vh);}
+    to{transform:translateY(110vh);}
+}
+
+/* chữ rơi */
+.loveText{
+    position:absolute;
+    font-size:20px;
+    color:#ff4d88;
+    font-weight:bold;
+    animation:textFall linear infinite;
+}
+
+@keyframes textFall{
+    from{transform:translateY(-10vh);}
+    to{transform:translateY(110vh);}
 }
 
 /* pháo hoa */
-.firework {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    animation: explode 1s ease-out forwards;
+.firework{
+    position:absolute;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    animation:explode 1s ease-out forwards;
 }
 
-@keyframes explode {
-    to {
-        transform: translate(var(--x), var(--y));
-        opacity: 0;
+@keyframes explode{
+    to{
+        transform:translate(var(--x),var(--y));
+        opacity:0;
     }
 }
 </style>
@@ -88,76 +97,91 @@ img {
 
 <body>
 
+<!-- nhạc -->
+<audio id="music" loop>
+  <source src="Vườn Mây.mp3" type="audio/mpeg">
+</audio>
+
 <div id="lock">
-    <h1>🔒 Nhập mật khẩu</h1>
-    <input type="password" id="pass" placeholder="Mật khẩu">
-    <button onclick="unlock()">Mở</button>
+<h1>🔒 Nhập mật khẩu</h1>
+<input type="password" id="pass">
+<button onclick="unlock()">Mở</button>
 </div>
 
 <div id="main">
-    <h1>💖 Love Website 💖</h1>
-    <p>Dành cho người đặc biệt nhất</p>
+<h1>💖 Love Website 💖</h1>
 
-    <img src="https://scontent.fhph5-1.fna.fbcdn.net/v/t1.15752-9/624576839_1420927822956111_8777379560150335115_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeG5RuP1unCEKEOLCSTz-78_9ahUKNoqChn1qFQo2ioKGcAnXqwf9hKe-vQZJeJ7Y0d1CILeKSCMxc4Nz3qrGG3V&_nc_ohc=SPIm0X64jcMQ7kNvwHQJnPW&_nc_oc=AdmoKFxhVdyL2AS2tmYMla5WLkhc8OzjUcv5BWaauH-IprfJYJM9v7enr7GRA6YtTFOx1FP5yo1SldO8Yz6llJED&_nc_zt=23&_nc_ht=scontent.fhph5-1.fna&oh=03_Q7cD4gGTBe3MwfvIZ10zpupWaWCnEmZQUylLUlKfArRyUgFlLw&oe=69B40AB9">
+<img src="https://scontent.fhph5-1.fna.fbcdn.net/v/t1.15752-9/624576839_1420927822956111_8777379560150335115_n.jpg">
+<img src="https://scontent.fhph5-1.fna.fbcdn.net/v/t1.15752-9/625097683_923205017064870_5343829966108738832_n.jpg">
 
-    <img src="https://scontent.fhph5-1.fna.fbcdn.net/v/t1.15752-9/625097683_923205017064870_5343829966108738832_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGiby3gt0hQzeJXvT9EAyC64f1V-uS-h8Ph_VX65L6Hw-I9NrdKY_dYi2h2LQCwL-Mc6v8OdfhBjve-wh-Zb0Xg&_nc_ohc=q6xYJV1AQQEQ7kNvwEg4z52&_nc_oc=Adn4fILG0R3EfPHUdU-UZvKBtEIH0WdFtCaA7961xO7Eoq_JnpPfNleBA83C_JgZoZzDnZiGVjC0pCQ-zLjcogkT&_nc_zt=23&_nc_ht=scontent.fhph5-1.fna&oh=03_Q7cD4gHGQQLECyo8YFB73eu64onIjI15Zcc8HwWQiCbFI3hmVg&oe=69B424C0">
-
-    <br>
-    <button onclick="showLove()">Bấm vào đây</button>
+<br>
+<button onclick="showLove()">Bấm vào đây</button>
 </div>
 
 <script>
-const PASSWORD = "27122025";
+const PASSWORD="27122025";
 
-function unlock() {
-    const p = document.getElementById("pass").value;
-    if (p === PASSWORD) {
-        document.getElementById("lock").style.display = "none";
-        document.getElementById("main").style.display = "block";
+function unlock(){
+    if(document.getElementById("pass").value===PASSWORD){
+        document.getElementById("lock").style.display="none";
+        document.getElementById("main").style.display="block";
+        document.getElementById("music").play();
         startHearts();
-        setInterval(fireworks, 1200);
-    } else {
-        alert("Sai mật khẩu!");
-    }
+        startLoveText();
+        setInterval(fireworks,1200);
+    }else alert("Sai mật khẩu!");
 }
 
-function showLove() {
-    alert("Gửi đến người anh trân trọng nhất hiện tại. Phương ơiii thật sự là lúc nàyy ấyyy a đang thật sự rất yêu e. A mong và a sẽ cố gắng để cho mqh của chúng mình sẽ có thể tính theo tháng theo năm và a cũng muốn chúng ta cố gắng cùng nhau bước tiếp trên con đường còn dài phía trước <3 yêu e ạ người quan trọng nhất của a MÃI YÊU VỢ ạa:3 💕");
+function showLove(){
+alert("Gửi đến người anh trân trọng nhất hiện tại. Phương ơiii thật sự là lúc nàyy ấyyy a đang thật sự rất yêu e... Mãi yêu 💕");
 }
 
 /* tim rơi */
-function startHearts() {
-    setInterval(() => {
-        const h = document.createElement("div");
-        h.className = "heart";
-        h.innerHTML = "❤️";
-        h.style.left = Math.random()*100+"vw";
-        h.style.animationDuration = (2+Math.random()*3)+"s";
-        document.body.appendChild(h);
-        setTimeout(()=>h.remove(),5000);
-    },250);
+function startHearts(){
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(2+Math.random()*3)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),5000);
+},250);
+}
+
+/* chữ rơi */
+function startLoveText(){
+setInterval(()=>{
+let t=document.createElement("div");
+t.className="loveText";
+t.innerHTML="my love";
+t.style.left=Math.random()*100+"vw";
+t.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(t);
+setTimeout(()=>t.remove(),6000);
+},400);
 }
 
 /* pháo hoa */
-function fireworks() {
-    const x = Math.random()*window.innerWidth;
-    const y = Math.random()*window.innerHeight/2;
+function fireworks(){
+const x=Math.random()*window.innerWidth;
+const y=Math.random()*window.innerHeight/2;
 
-    for (let i=0;i<30;i++) {
-        const f = document.createElement("div");
-        f.className = "firework";
-        f.style.left = x+"px";
-        f.style.top = y+"px";
-        f.style.background = ["#ff4d6d","#ff85a1","#ff99c8","#ffc2d1"][Math.floor(Math.random()*4)];
+for(let i=0;i<30;i++){
+let f=document.createElement("div");
+f.className="firework";
+f.style.left=x+"px";
+f.style.top=y+"px";
+f.style.background=["#ff4d6d","#ff85a1","#ff99c8","#ffc2d1"][Math.floor(Math.random()*4)];
 
-        const angle = Math.random()*2*Math.PI;
-        const dist = 120+Math.random()*60;
-        f.style.setProperty("--x", Math.cos(angle)*dist+"px");
-        f.style.setProperty("--y", Math.sin(angle)*dist+"px");
+const angle=Math.random()*2*Math.PI;
+const dist=120+Math.random()*60;
+f.style.setProperty("--x",Math.cos(angle)*dist+"px");
+f.style.setProperty("--y",Math.sin(angle)*dist+"px");
 
-        document.body.appendChild(f);
-        setTimeout(()=>f.remove(),1000);
-    }
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),1000);
+}
 }
 </script>
 
